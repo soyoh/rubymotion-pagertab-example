@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu 
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+    android:id="@+id/action_night"
+    android:title="Test Menu"
+    app:showAsAction="never">
+    <menu>
+      <group>
+        <item
+          android:id="@+id/test"
+          android:title="Test 1" />
+        <item
+          android:id="@+id/test_two"
+          android:title="Test 2" />
+        <item
+          android:id="@+id/test_three"
+          android:title="Test 3" />
+        <item
+          android:id="@+id/test_four"
+          android:title="Test 4" />
+      </group>
+    </menu>
+  </item>
+
+
+  <item
+    android:id="@+id/action_night"
+    android:title="Test menu checkable"
+    app:showAsAction="never">
+    <menu>
+      <group android:checkableBehavior="single">
+        <item
+          android:id="@+id/test"
+          android:title="Test 1" />
+        <item
+          android:id="@+id/test_two"
+          android:title="Test 2" />
+        <item
+          android:id="@+id/test_three"
+          android:title="Test 3" />
+        <item
+          android:id="@+id/test_four"
+          android:title="Test 4" />
+      </group>
+    </menu>
+  </item>
+
+
+</menu>

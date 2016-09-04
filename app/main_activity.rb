@@ -8,6 +8,9 @@ class MainActivity < Android::Support::V7::App::AppCompatActivity
     toolbar = findViewById(R::Id::Toolbar)
     setSupportActionBar(toolbar)
 
+    ab = supportActionBar
+    # ab.displayHomeAsUpEnabled = true
+
 
     tabLayout = findViewById(R::Id::Tab_layout)
     tabLayout.addTab(tabLayout.newTab().setText("Tab 1"))
@@ -25,4 +28,10 @@ class MainActivity < Android::Support::V7::App::AppCompatActivity
 
     @main_layout = findViewById(R::Id::Main_layout)
   end
+
+  def onCreateOptionsMenu(menu)
+    puts "---> onCreateOptionsMenu MainActivity"
+    true
+  end
+
 end
