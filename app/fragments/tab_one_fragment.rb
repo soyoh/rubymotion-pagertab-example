@@ -3,6 +3,8 @@ class TabOneFragment < Android::Support::V4::App::ListFragment
   attr_accessor :has_been_already_loaded
 
   def onCreateView(inflater, container, savedInstanceState)
+    @list = []
+    @full_data_list = []
     self.hasOptionsMenu = true
 
     view = inflater.inflate(R::Layout::Tab_one, container, false)
@@ -14,13 +16,14 @@ class TabOneFragment < Android::Support::V4::App::ListFragment
   end
 
   def onActivityCreated(savedInstanceState)
-    super(savedInstanceState)    
-    setListAdapter(adapter)
-    # getListView().setOnItemClickListener(this)
+    super(savedInstanceState)
+    @adapter = Android::Widget::ArrayAdapter.new(activity, Android::R::Layout::Simple_list_item_1, [])
+    setListAdapter(@adapter)
   end
 
-  def adapter
-    Android::Widget::ArrayAdapter.new(activity, Android::R::Layout::Simple_list_item_1, States.all)
+  def onListItemClick(parent, view, position, id)
+    puts @list[position]
+    puts @full_data_list[position]
   end
 
   def onCreateOptionsMenu(menu, inflater)
@@ -32,8 +35,37 @@ class TabOneFragment < Android::Support::V4::App::ListFragment
     if (self.isVisible)
       if (is_fragment_visible && !@has_been_already_loaded)
         puts "---> Fragment #{self.class} visible"
+        
+        get_demo_data
+
         @has_been_already_loaded = true
       end
+    end
+
+    def get_demo_data
+      requests = MotionVolley::Request.new
+      url = "http://jsonplaceholder.typicode.com/posts"
+      requests.json_array(url, activity, self)
+
+      # Simple Post
+      # requests.json(:get, 'http://jsonplaceholder.typicode.com/posts/12', activity, self)
+    end
+
+    def data_response(response)
+      puts "======== Success Response "
+      puts response
+      
+      @list = []
+      @full_data_list = []
+      for i in 0..(response.length-1)
+        object = response.get(i)
+        @full_data_list << object
+        @list << object.getString('title')
+      end
+
+      @adapter.clear()
+      @adapter.addAll(@list)
+      @adapter.notifyDataSetChanged()
     end
 
   end

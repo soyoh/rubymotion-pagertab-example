@@ -21,6 +21,8 @@ Motion::Project::App.setup do |app|
 
   app.files += Dir.glob(File.join(app.project_dir, 'lib/**/*.rb'))
 
+  app.permissions = [:internet]
+
   app.gradle do
   	dependency 'com.android.support:appcompat-v7:24.2.0'
     dependency 'com.android.support:design:24.2.0'
