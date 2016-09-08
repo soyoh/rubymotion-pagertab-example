@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/soyoh/motion-android-volley.git
+  revision: 750c60d242974edbcae695c3a3cb7037c5368b45
+  branch: master
+  specs:
+    motion-android-volley (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,6 +18,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  motion-android-volley!
   motion-gradle
   newclear
   rake

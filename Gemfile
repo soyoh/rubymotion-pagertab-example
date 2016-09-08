@@ -6,3 +6,5 @@ gem 'rake'
 
 gem 'motion-gradle'
 gem 'newclear'
+
+gem 'motion-android-volley', :github => 'soyoh/motion-android-volley', :branch => 'master'
